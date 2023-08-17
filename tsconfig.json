@@ -16,8 +16,10 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    // desativando a verificação de variáveis locais não utilizadas
+    "noUnusedLocals": false,
+    // desativando a verificação de parâmetros não utilizados em funções. Isso significa que você pode definir parâmetros em suas funções que não são usados no corpo da função 
+    "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
