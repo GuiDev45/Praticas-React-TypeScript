@@ -115,7 +115,73 @@ const Paragrafo = ({
   );
 };
 
+// ------------------------------------------------
+
+// TypeScript é inteligente o suficiente pra entender que id é number, name é string etc.
+const user = {
+  id: 1,
+  name: "John Doe",
+  age: 30,
+  isAdmin: true,
+  birthDate: new Date("1980-01-01"),
+};
+
+// typeof é reservado e bem interessante, é possível extrar apenas os tipos de um objeto normal, ou seja, meu tipo é dinamico
+type UserAttributes = typeof user;
+
+// como mary é do tipo UserAttributes eu consigo usar todos os atributos do objeto user, o autocompletar vai ajudar e também vai exigir nesse caso que os atributos sejam passados
+const mary: UserAttributes = {
+  id: 2,
+  name: "mary orange",
+  age: 25,
+  isAdmin: false,
+  birthDate: new Date("1990-01-01"),
+};
+
+// ------------------------------------------------
+
+// Inferencia de tipos
+function sumNumbers(a: number, b: number) {
+  return a + b;
+}
+
+// apenas para não ficar acusando que não está sendo usado.
+console.log(sumNumbers);
+/*
+Não precisa colocar que o retorno é um : number, porque o TypeScript já entende que o retorno vai ser um number
+function sumNumbers(a: number, b: number): number {
+*/
+
+// ------------------------------------------------
+
+function List<ItemType>({
+  items,
+  render,
+}: {
+  items: ItemType[];
+  render: (item: ItemType, index: number) => React.ReactNode;
+}) {
+  return (
+    <ul>
+      {items.map((item, index) => {
+        return render(item, index);
+      })}
+    </ul>
+  );
+}
+
 function App() {
+  const items = [
+    {
+      id: 1,
+      name: "John John",
+    },
+    {
+      id: 2,
+      name: "orange orange",
+    },
+  ];
+
   return (
     <div>
       <Title text="Hello World"></Title>
@@ -152,6 +218,37 @@ function App() {
       <Paragrafo color="red" size="small">
         Eu sou um parágrafo
       </Paragrafo>
+
+      {/* Renderizando a constante "mary" */}
+      <div>
+        <p>ID: {mary.id}</p>
+        <p>Name: {mary.name}</p>
+        <p>Age: {mary.age}</p>
+        <p>Is Admin: {mary.isAdmin ? "Yes" : "No"}</p>
+        <p>Birth Date: {mary.birthDate.toDateString()}</p>
+      </div>
+
+      {/* Renderizando a constante "mary" outra forma */}
+      <div>
+        {Object.entries(mary).map(([key, value]) => (
+          <p key={key}>
+            <strong>{key}: </strong>
+            {typeof value === "object" && value instanceof Date
+              ? value.toDateString()
+              : value.toString()}
+          </p>
+        ))}
+      </div>
+
+      <List
+        items={items}
+        render={(item, index) => {
+          if (item.id === 1) {
+            return <p>{item.name}</p>;
+          }
+          return <h3>{index}</h3>;
+        }}
+      ></List>
     </div>
   );
 }
