@@ -170,7 +170,7 @@ function List<ItemType>({
   );
 }
 
-function App() {
+function AppResumo() {
   const items = [
     {
       id: 1,
@@ -253,4 +253,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppResumo;
