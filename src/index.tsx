@@ -11,6 +11,7 @@ import AppEventos from "./0204-Eventos/AppEventos.tsx";
 import AppUseState from "./0301-useState-TSX-1/AppUseState.tsx";
 import AppUseStateTwo from "./0301-useState-TSX-2/AppUseStateTwo.tsx";
 import AppUseEffect from "./0302-useEffect/AppUseEffect.tsx";
+import AppUseRef from "./0303-useRef-TSX-1/AppUseRef.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -24,6 +25,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     {/*<AppEventos />*/}
     {/*<AppUseState />*/}
     {/*<AppUseStateTwo />*/}
-    <AppUseEffect />
+    {/*<AppUseEffect />*/}
+    <AppUseRef />
   </React.StrictMode>
 );
