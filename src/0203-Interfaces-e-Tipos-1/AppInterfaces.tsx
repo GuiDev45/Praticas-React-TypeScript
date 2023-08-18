@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 import Button from "./Button";
 
-function AppPropsThree() {
+function AppInterfaces() {
   return (
     <div>
       <Button>Incrementar</Button>
@@ -10,4 +10,4 @@ function AppPropsThree() {
   );
 }
 
-export default AppPropsThree;
+export default AppInterfaces;

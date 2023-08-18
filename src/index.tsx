@@ -6,6 +6,7 @@ import AppProps from "./0202-Props-1/AppProps.tsx";
 import AppPropsTwo from "./0202-Props-2/AppPropsTwo.tsx";
 import AppPropsThree from "./0202-Props-3/AppPropsThree.tsx";
 import AppInterfaces from "./0203-Interfaces-e-Tipos-1/AppInterfaces.tsx";
+import AppInterfacesTwo from "./0203-Interfaces-e-Tipos-2/AppInterfacesTwo.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     {/*<AppProps />*/}
     {/*<AppPropsTwo />*/}
     {/*<AppPropsThree />*/}
-    <AppInterfaces />
+    {/*<AppInterfaces />*/}
+    <AppInterfacesTwo />
   </React.StrictMode>
 );
