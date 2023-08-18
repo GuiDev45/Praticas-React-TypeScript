@@ -12,6 +12,7 @@ import AppUseState from "./0301-useState-TSX-1/AppUseState.tsx";
 import AppUseStateTwo from "./0301-useState-TSX-2/AppUseStateTwo.tsx";
 import AppUseEffect from "./0302-useEffect/AppUseEffect.tsx";
 import AppUseRef from "./0303-useRef-TSX-1/AppUseRef.tsx";
+import AppUseRefTwo from "./0303-useRef-TSX-2/AppUseRefTwo.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -26,6 +27,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     {/*<AppUseState />*/}
     {/*<AppUseStateTwo />*/}
     {/*<AppUseEffect />*/}
-    <AppUseRef />
+    {/*<AppUseRef />*/}
+    <AppUseRefTwo />
   </React.StrictMode>
 );
