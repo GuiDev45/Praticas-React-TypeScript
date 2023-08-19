@@ -17,6 +17,7 @@ import AppCustomHook from "./0304-Custom-Hook-TSX/AppCustomHook.tsx";
 import AppUseFetch from "./0305-useFetch-TSX/AppUseFetch.tsx";
 import AppUseContext from "./0306-useContext-TSX/AppUseContext.tsx";
 import AppUseReducer from "./0307-useReducer-TSX/AppUseContext.tsx";
+import AppProjeto from "./0400-Projeto-TSX/AppProjeto.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -36,6 +37,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     {/*<AppCustomHook />*/}
     {/*<AppUseFetch />*/}
     {/*<AppUseContext />*/}
-    <AppUseReducer />
+    {/*<AppUseReducer />*/}
+    <AppProjeto />
   </React.StrictMode>,
 );
