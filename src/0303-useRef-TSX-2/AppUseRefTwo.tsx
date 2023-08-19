@@ -20,7 +20,7 @@ function AppUseRefTwo() {
     video.current.playbackRate = speed;
   }
 
-  //
+  // Para usar o pictureInPicture é só ver na documentação e usar bastante o auto completar que se torna algo bem simples.
   async function pictureInPicture() {
     if (!video.current) return;
     if (document.pictureInPictureElement) {
