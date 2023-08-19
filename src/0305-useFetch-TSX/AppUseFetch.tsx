@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import useFetch from "./useFetch";
+import useFetch from "./useFetch"; // Importa o custom hook useFetch.
 
 type Produto = {
   id: string;
@@ -12,19 +12,19 @@ type Produto = {
 };
 
 function AppUseFetch() {
-  const [id, setId] = React.useState("p001");
-  const produtos = useFetch<Produto[]>("https://data.origamid.dev/produtos/");
-  const produto = useFetch<Produto>(
+  const [id, setId] = React.useState("p001"); // Estado para controlar o ID do produto selecionado
+  const produtos = useFetch<Produto[]>("https://data.origamid.dev/produtos/"); // Chama o hook useFetch para buscar todos os produtos
+  const produto = useFetch<Produto>( // Chama o hook useFetch para buscar um produto específico com base no ID
     `https://data.origamid.dev/produtos/${id}`,
     {
-      cache: "force-cache",
+      cache: "force-cache", //  força o navegador a buscar a resposta da requisição diretamente do cache, evitando que o navegador retorne um resultado em cache válido, o que significa que ele tentará obter os dados mais recentes do servidor. Essa opção é utilizada para garantir que os dados obtidos para um produto específico sejam os mais atualizados possíveis.
     },
   );
 
   return (
     <section className="flex">
       <div>
-        {produtos.data &&
+        {produtos.data && // Renderiza uma lista de botões com os IDs dos produtos se houver dados
           produtos.data.map((produto) => (
             <button
               onClick={() => setId(produto.id)}
@@ -36,7 +36,9 @@ function AppUseFetch() {
           ))}
       </div>
       <div>
+        {/*Renderiza "Carregando..." se a requisição do produto estiver em loading*/}
         {produto.loading && <div>Carregando...</div>}
+        {/*Renderiza os detalhes do produto se houver dados disponíveis*/}
         {produto.data && (
           <ul>
             <li>ID: {produto.data.id}</li>
