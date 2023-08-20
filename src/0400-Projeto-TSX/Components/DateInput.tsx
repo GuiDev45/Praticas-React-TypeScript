@@ -1,18 +1,43 @@
 import React from "react";
 
-// Define o tipo IDateInput que estende as propriedades de um input e adiciona uma propriedade label
+const generalStyle: React.CSSProperties = {
+  fontSize: "1rem",
+  color: "var(--color-2)",
+  padding: "var(--gap-s) .75rem",
+  backgroundColor: "var(--color-4)",
+  borderRadius: "var(--gap)",
+};
+
+const labelStyle: React.CSSProperties = {
+  display: "block",
+  marginBottom: "var(--gap-s)",
+  fontWeight: "600",
+  ...generalStyle,
+};
+
+const inputStyle: React.CSSProperties = {
+  border: "none",
+  fontFamily: "monospace",
+  ...generalStyle,
+};
+
 type IDateInput = React.ComponentProps<"input"> & {
   label: string;
 };
 
-// Componente DataInput que recebe propriedades e renderiza uma entrada de data com um rótulo
 const DataInput = ({ label, ...props }: IDateInput) => {
   return (
     <div>
-      {/* Rótulo associado ao input usando htmlFor */}
-      <label htmlFor={label}>{label}</label>
-      {/* Input de data que utiliza a propriedade label como id e name */}
-      <input id={label} name={label} type="date" {...props} />
+      <label style={labelStyle} htmlFor={label}>
+        {label}
+      </label>
+      <input
+        style={inputStyle}
+        id={label}
+        name={label}
+        type="date"
+        {...props}
+      />
     </div>
   );
 };
