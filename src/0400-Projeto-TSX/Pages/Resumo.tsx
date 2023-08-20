@@ -1,16 +1,43 @@
-import React from "react";
 import { useData } from "../Context/DataContext";
 
-// Componente chamado Resumo
 const Resumo = () => {
-  // Usando o hook useData para acessar os dados do contexto
   const { data } = useData();
 
-  // Imprimindo os dados no console (pode ser removido em produção)
-  console.log(data);
-
-  // Retornando um elemento JSX que exibe "Resumo"
-  return <div>Resumo</div>;
+  if (data === null) return null;
+  return (
+    <section>
+      <div className="resumo flex mb">
+        <div className="box">
+          <h2>Vendas</h2>
+          <span>
+            {data
+              .filter((i) => i.status !== "falha")
+              .reduce((acc, item) => acc + item.preco, 0)
+              .toLocaleString("pt-br", { style: "currency", currency: "BRL" })}
+          </span>
+        </div>
+        <div className="box">
+          <h2>Recebido</h2>
+          <span>
+            {data
+              .filter((i) => i.status === "pago")
+              .reduce((acc, item) => acc + item.preco, 0)
+              .toLocaleString("pt-br", { style: "currency", currency: "BRL" })}
+          </span>
+        </div>
+        <div className="box">
+          <h2>Processando</h2>
+          <span>
+            {data
+              .filter((i) => i.status === "processando")
+              .reduce((acc, item) => acc + item.preco, 0)
+              .toLocaleString("pt-br", { style: "currency", currency: "BRL" })}
+          </span>
+        </div>
+      </div>
+      <div className="box">Gráficos</div>
+    </section>
+  );
 };
 
 export default Resumo;
