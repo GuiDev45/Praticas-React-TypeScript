@@ -1,14 +1,14 @@
 import React from "react";
 import DateInput from "./DateInput";
+import { useData } from "../Context/DataContext";
 
 // Componente DataRange
 const DataRange = () => {
-  // Estados para armazenar as datas de início e final
-  const [inicio, setInicio] = React.useState("");
-  const [final, setFinal] = React.useState("");
+  // Usando o hook useData para acessar os dados de início, final e suas funções de atualização
+  const { inicio, setInicio, final, setFinal } = useData();
 
   return (
-    // Formulário que previne o comportamento padrão de submit
+    // Formulário com estilo "box flex" que previne o comportamento padrão de submit
     <form className="box flex" onSubmit={(e) => e.preventDefault()}>
       {/* Componente DateInput para selecionar a data de início */}
       <DateInput
@@ -16,8 +16,6 @@ const DataRange = () => {
         value={inicio}
         onChange={({ target }) => setInicio(target.value)}
       />
-
-      {/* Exibe a data de início (apenas para fins de depuração) */}
       {inicio}
 
       {/* Componente DateInput para selecionar a data final */}
@@ -26,8 +24,6 @@ const DataRange = () => {
         value={final}
         onChange={({ target }) => setFinal(target.value)}
       />
-
-      {/* Exibe a data final (apenas para fins de depuração) */}
       {final}
     </form>
   );

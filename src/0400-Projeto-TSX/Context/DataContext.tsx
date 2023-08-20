@@ -1,14 +1,16 @@
 import React from "react";
 import useFetch from "../Hooks/useFetch";
 
-// Definindo a estrutura dos dados que o DataContext vai conter
 type IDataContext = {
-  data: IVenda[] | null; // Um array de objetos IVenda ou null se não estiver disponível
-  loading: boolean; // Indica se os dados estão sendo buscados no momento
-  error: string | null; // Armazena uma mensagem de erro se algo der errado, caso contrário, é null
+  data: IVenda[] | null;
+  loading: boolean;
+  error: string | null;
+  inicio: string; // Data de início
+  final: string; // Data final
+  setInicio: React.Dispatch<React.SetStateAction<string>>; // Função para atualizar a data de início
+  setFinal: React.Dispatch<React.SetStateAction<string>>; // Função para atualizar a data final
 };
 
-// Definindo a estrutura de uma venda individual (IVenda)
 type IVenda = {
   id: string;
   nome: string;
@@ -19,25 +21,36 @@ type IVenda = {
   parcelas: number | null;
 };
 
-// Criando um contexto do React para a estrutura IDataContext, inicialmente definido como null
 const DataContext = React.createContext<IDataContext | null>(null);
 
-// Hook personalizado que facilita o consumo do DataContext
 export const useData = () => {
   const context = React.useContext(DataContext);
   if (!context)
-    throw new Error("useDataa precisa estar em DataContextProvider"); // Gera um erro se o hook for usado fora do DataContextProvider
+    throw new Error("useDataa precisa estar em DataContextProvider");
   return context;
 };
 
-// Componente que fornece o DataContext aos seus filhos usando useFetch para buscar dados
+// Função que retorna a data formatada com base no número de dias passado
+function getDate(n: number) {
+  const date = new Date();
+  date.setDate(date.getDate() - n);
+  const dd = String(date.getDate()).padStart(2, "0");
+  const mm = String(date.getMonth() + 1).padStart(2, "0");
+  const yyyy = date.getFullYear();
+  return `${yyyy}-${mm}-${dd}`;
+}
+
 export const DataContextProvider = ({ children }: React.PropsWithChildren) => {
+  const [inicio, setInicio] = React.useState(getDate(14)); // Estado para a data de início
+  const [final, setFinal] = React.useState(getDate(0)); // Estado para a data final
+
   const { data, loading, error } = useFetch<IVenda[]>(
-    "https://data.origamid.dev/vendas/",
+    `https://data.origamid.dev/vendas/?inicio=${inicio}&final=${final}`,
   );
   return (
-    // Fornecendo o DataContext com os dados buscados, estado de carregamento e mensagem de erro
-    <DataContext.Provider value={{ data, loading, error }}>
+    <DataContext.Provider
+      value={{ data, loading, error, inicio, setInicio, final, setFinal }}
+    >
       {children}
     </DataContext.Provider>
   );
