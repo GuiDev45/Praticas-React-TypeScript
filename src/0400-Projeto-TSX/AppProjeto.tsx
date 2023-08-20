@@ -8,7 +8,7 @@ function AppProjeto() {
   return (
     // Envolve os componentes com o DataContextProvider para fornecer contexto de dados
     <DataContextProvider>
-      <div>
+      <div className="container">
         <Sidenav />
         <main>
           <Header /> {/*Formulários*/}

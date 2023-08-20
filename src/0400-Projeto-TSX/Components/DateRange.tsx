@@ -9,7 +9,7 @@ const DataRange = () => {
 
   return (
     // Formulário que previne o comportamento padrão de submit
-    <form onSubmit={(e) => e.preventDefault()}>
+    <form className="box flex" onSubmit={(e) => e.preventDefault()}>
       {/* Componente DateInput para selecionar a data de início */}
       <DateInput
         label="Início"
