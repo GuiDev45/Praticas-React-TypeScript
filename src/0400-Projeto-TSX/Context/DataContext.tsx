@@ -11,7 +11,7 @@ type IDataContext = {
   setFinal: React.Dispatch<React.SetStateAction<string>>; // Função para atualizar a data final
 };
 
-type IVenda = {
+export type IVenda = {
   id: string;
   nome: string;
   preco: number;
