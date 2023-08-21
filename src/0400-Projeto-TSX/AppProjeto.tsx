@@ -17,7 +17,7 @@ function AppProjeto() {
             <Header />
             <Routes>
               <Route path="/" element={<Resumo />} />
-              <Route path="/vendas" element={<Vendas />} />
+              <Route path="/vendas/" element={<Vendas />} />
               <Route path="/vendas/:id" element={<Venda />} />
             </Routes>
           </main>
