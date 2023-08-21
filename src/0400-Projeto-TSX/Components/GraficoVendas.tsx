@@ -1,7 +1,9 @@
 import {
   CartesianGrid,
+  Legend,
   Line,
   LineChart,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
@@ -31,14 +33,28 @@ const dadosGrafico = [
 
 const GraficoVendas = ({ data }: { data: IVenda[] }) => {
   return (
-    <LineChart width={500} height={300} data={dadosGrafico}>
-      <XAxis dataKey="data" />
-      <Tooltip />
-      <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-      <Line type="monotone" dataKey="pago" stroke="#8884d8" />
-      <Line type="monotone" dataKey="processando" stroke="#82ca9d" />
-      <Line type="monotone" dataKey="falha" stroke="#000000" />
-    </LineChart>
+    <ResponsiveContainer width={"99%"} height={400}>
+      <LineChart data={dadosGrafico}>
+        <XAxis dataKey="data" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <CartesianGrid stroke="#999" strokeDasharray="5 5" />
+        <Line type="monotone" dataKey="pago" stroke="#8884d8" strokeWidth={3} />
+        <Line
+          type="monotone"
+          dataKey="processando"
+          stroke="#FBCB21"
+          strokeWidth={3}
+        />
+        <Line
+          type="monotone"
+          dataKey="falha"
+          stroke="#000000"
+          strokeWidth={3}
+        />
+      </LineChart>
+    </ResponsiveContainer>
   );
 };
 
