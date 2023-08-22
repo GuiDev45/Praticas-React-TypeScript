@@ -1,3 +1,4 @@
+/* Definindo variáveis de cores e espaçamento */
 html {
   --color-1: #463220;
   --color-2: #66593c;
@@ -8,10 +9,12 @@ html {
   --gap: 1.25rem;
 }
 
+/* Estilizando caixas com borda de cor 1 */
 .box {
   outline: 2px solid var(--color-1);
 }
 
+/* Estilizando o corpo do documento */
 body {
   font-family: sans-serif;
   margin: 0px;
@@ -19,18 +22,21 @@ body {
   background: var(--color-4);
 }
 
+/* Estilizando caixas com espaçamento e borda arredondada */
 .box {
   padding: var(--gap);
   border-radius: var(--gap);
   background: var(--color-5);
 }
 
+/* Estilizando botões */
 button {
   font-family: sans-serif;
   font-size: 1rem;
   cursor: pointer;
 }
 
+/* Estilizando títulos */
 h1,
 h2,
 h3 {
@@ -38,26 +44,30 @@ h3 {
   margin: 0px;
 }
 
+/* Removendo estilos padrão de listas */
 ul {
   list-style: none;
   padding: 0px;
   margin: 0px;
 }
 
+/* Estilizando layout flexível */
 .flex {
   display: flex;
   gap: var(--gap);
 }
 
-/*Seletor, tem que ser filho direto de .flex, *qualquer filho direto*/
+/* Aplicando estilo a filhos diretos de .flex */
 .flex > * {
   flex: 1;
 }
 
+/* Adicionando margem inferior */
 .mb {
   margin-bottom: var(--gap);
 }
 
+/* Estilizando backgrounds */
 .bg-1 {
   background: var(--color-1);
 }
@@ -78,6 +88,7 @@ ul {
   background: var(--color-5);
 }
 
+/* Estilizando o contêiner principal */
 .container {
   display: grid;
   padding: var(--gap);
@@ -86,13 +97,14 @@ ul {
 }
 
 /* sidenav */
-
+/* Estilizando itens da barra lateral */
 .sidenav li {
   display: flex;
   align-items: center;
   gap: var(--gap-s);
 }
 
+/* Estilizando ícones na barra lateral */
 .sidenav li span {
   width: 2rem;
   height: 2rem;
@@ -103,6 +115,7 @@ ul {
   border-radius: var(--gap);
 }
 
+/* Estilizando links na barra lateral */
 .sidenav li a {
   flex: 1;
   font-size: 1.125rem;
@@ -112,10 +125,12 @@ ul {
   padding: var(--gap-s) 0;
 }
 
+/* Estilizando ícones na barra lateral ao passar o mouse */
 .sidenav li:hover span {
   background: var(--color-3);
 }
 
+/* Animação de rotação */
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -123,7 +138,7 @@ ul {
 }
 
 /* daterange */
-
+/* Estilizando seções de intervalo de datas */
 .daterange {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -131,12 +146,13 @@ ul {
 }
 
 /* resumo */
-
+/* Estilizando seções de resumo */
 .resumo {
   font-size: 1.5rem;
   font-weight: 600;
 }
 
+/* Estilizando títulos de resumo */
 .resumo h2 {
   font-size: 1.5rem;
   margin-bottom: var(--gap);
@@ -144,7 +160,7 @@ ul {
 }
 
 /* venda */
-
+/* Estilizando itens de venda */
 .venda {
   display: grid;
   grid-template-columns: auto auto 1fr;
@@ -153,17 +169,19 @@ ul {
   align-items: center;
 }
 
+/* Ajustando alinhamento do último item de venda */
 .venda div:last-child {
   justify-self: end;
 }
 
+/* Removendo decoração de link */
 .venda a {
   text-decoration: none;
   color: inherit;
 }
 
 /* small screen */
-
+/* Estilos para telas pequenas */
 @media (max-width: 1000px) {
   .resumo {
     flex-direction: column;
@@ -176,6 +194,7 @@ ul {
   }
 }
 
+/* Estilos para telas ainda menores */
 @media (max-width: 700px) {
   html {
     --gap-s: 0.5rem;
